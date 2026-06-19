@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Girl From Mars | Acoustic Duo</title>
+<style>
+:root {
+  --teal:#063f3d;
+  --deep:#042f2e;
+  --orange:#e87524;
+  --gold:#f0a12b;
+  --cream:#f4dfb7;
+  --dark:#071514;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:var(--deep);
+  color:var(--cream);
+  font-family:Arial, Helvetica, sans-serif;
+}
+a { color:inherit; }
+
+.hero {
+  min-height:auto;
+  background:#063f3d;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+  overflow:hidden;
+}
+.hero img {
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  object-position:center top;
+}
+
+.booking-strip {
+  background:#032c2a;
+  border-top:1px solid rgba(244,223,183,.18);
+  border-bottom:1px solid rgba(244,223,183,.18);
+  display:grid;
+  grid-template-columns:repeat(5, 1fr) 1.75fr;
+  color:var(--cream);
+}
+.strip-item {
+  padding:20px 16px;
+  text-align:center;
+  border-right:1px solid rgba(244,223,183,.25);
+  text-transform:uppercase;
+  font-weight:900;
+  font-size:.88rem;
+  letter-spacing:.04em;
+}
+.strip-item strong {
+  display:block;
+  color:var(--orange);
+  font-size:1rem;
+}
+.strip-email {
+  color:white;
+  background:rgba(232,117,36,.18);
+}
+
+section { padding:36px 6vw; }
+h2 {
+  margin:0 0 30px;
+  color:var(--orange);
+  font-size:clamp(2rem,4vw,3.6rem);
+  line-height:1;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  font-weight:900;
+}
+h3 {
+  margin-top:0;
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  font-size:1.45rem;
+}
+.bio-section {
+  background:linear-gradient(180deg,#063f3d,#042f2e);
+  padding-top:18px;
+  margin-top:0px;
+}
+.bio-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:34px;
+}
+.bio-card {
+  background:rgba(244,223,183,.08);
+  border:1px solid rgba(244,223,183,.22);
+  border-radius:18px;
+  padding:28px;
+  line-height:1.58;
+}
+.bio-card.full {
+  grid-column:1/-1;
+}
+.bio-photo-wrap {
+  background:rgba(7,21,20,.25);
+  border:4px solid rgba(244,223,183,.2);
+  border-radius:14px;
+  padding:10px;
+  margin-bottom:20px;
+}
+.bio-photo {
+  display:block;
+  width:100%;
+  height:520px;
+  object-fit:contain;
+  object-position:58% center;
+  border-radius:10px;
+  background:#031f1e;
+}
+
+.song-section {
+  background:var(--cream);
+  color:var(--dark);
+}
+.song-section h2 {
+  color:var(--deep);
+}
+.song-grid {
+  columns:3;
+  padding-left:22px;
+  font-size:1rem;
+  line-height:1.55;
+}
+.song-grid li {
+  break-inside:avoid;
+  margin-bottom:7px;
+}
+
+.listen-section {
+  background:#063f3d;
+}
+.track {
+  border:1px solid rgba(244,223,183,.24);
+  padding:18px;
+  margin-bottom:12px;
+  border-radius:10px;
+  background:rgba(244,223,183,.08);
+  max-width:720px;
+}
+audio {
+  width:100%;
+  margin-top:8px;
+}
+.coming-soon {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+}
+.coming-soon span {
+  color:var(--gold);
+  font-weight:900;
+  text-transform:uppercase;
+  font-size:.85rem;
+  letter-spacing:.05em;
+}
+
+.booking {
+  text-align:center;
+  background:#042f2e;
+}
+.booking-card {
+  max-width:820px;
+  margin:0 auto;
+  font-size:1.2rem;
+  background:rgba(244,223,183,.08);
+  border:1px solid rgba(244,223,183,.22);
+  border-radius:18px;
+  padding:28px;
+}
+.email {
+  display:inline-block;
+  margin-top:16px;
+  padding:18px 26px;
+  background:var(--orange);
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:900;
+}
+
+.shows-section {
+  background:#042f2e;
+}
+.show-card {
+  max-width:900px;
+  display:grid;
+  grid-template-columns:110px 1fr;
+  gap:22px;
+  align-items:center;
+  background:rgba(244,223,183,.08);
+  border:1px solid rgba(244,223,183,.22);
+  border-radius:18px;
+  padding:22px;
+  margin-bottom:16px;
+}
+.show-date {
+  background:var(--orange);
+  color:white;
+  border-radius:12px;
+  padding:18px 12px;
+  text-align:center;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.show-card strong {
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  font-size:1.15rem;
+}
+.show-card p {
+  margin:.35rem 0 0;
+  color:var(--cream);
+}
+
+footer {
+  background:#031f1e;
+  color:rgba(244,223,183,.75);
+  padding:28px 6vw;
+  text-align:center;
+}
+
+@media(max-width:900px) {
+  .hero {
+    min-height:auto;
+  }
+  .hero img {
+    width:100%;
+    height:auto;
+    object-fit:contain;
+  }
+  .booking-strip {
+    grid-template-columns:1fr 1fr;
+  }
+  .strip-email {
+    grid-column:1/-1;
+  }
+  .bio-grid {
+    grid-template-columns:1fr;
+  }
+  .bio-card.full {
+    grid-column:auto;
+  }
+  .song-grid {
+    columns:1;
+  }
+  .show-card {
+    grid-template-columns:1fr;
+  }
+  .bio-photo {
+    height:auto;
+    max-height:540px;
+  }
+}
+
+
+
+
+.hero {
+  position: relative;
+}
+.hero-nav {
+  position: absolute;
+  top: 10px;
+  right: 35px;
+  left: auto;
+  transform: none;
+  z-index: 10;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px 18px;
+  background: rgba(3,31,30,.72);
+  border: 1px solid rgba(244,223,183,.25);
+  border-radius: 999px;
+  backdrop-filter: blur(3px);
+}
+.hero-nav-link {
+  color: var(--cream);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .05em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.hero-nav-link:hover {
+  color: var(--orange);
+}
+@media(max-width:760px) {
+  .hero-nav {
+    position: static;
+    transform: none;
+    border-radius: 0;
+    width: 100%;
+    background: #031f1e;
+  }
+}
+
+
+.hero {
+  position: relative;
+}
+.hero-hotspot {
+  position: absolute;
+  z-index: 999;
+  display: block;
+  background: transparent;
+  cursor: pointer;
+}
+.listen-hotspot {
+  left: 5.0%;
+  top: 73.0%;
+  width: 14.8%;
+  height: 16.0%;
+}
+.songlist-hotspot {
+  left: 21.5%;
+  top: 73.0%;
+  width: 17.0%;
+  height: 16.0%;
+}
+.bookus-hotspot {
+  left: 40.0%;
+  top: 73.0%;
+  width: 15.799999999999997%;
+  height: 16.0%;
+}
+
+</style>
+</head>
+<body>
+
+
+<main>
+  <section class="hero">
+    <nav class="hero-nav">
+      <span class="hero-nav-link" role="button" tabindex="0" data-target="bios">Meet the Band</span>
+      <span class="hero-nav-link" role="button" tabindex="0" data-target="songs">Song List</span>
+      <span class="hero-nav-link" role="button" tabindex="0" data-target="listen">Listen</span>
+      <span class="hero-nav-link" role="button" tabindex="0" data-target="shows">Upcoming Shows</span>
+      <span class="hero-nav-link" role="button" tabindex="0" data-target="booking">Book Us</span>
+    </nav>
+    <img src="assets/hero-artwork-clean.png" alt="Girl From Mars acoustic duo hero artwork">
+    <div class="hero-hotspot listen-hotspot" role="button" tabindex="0" aria-label="Listen" data-target="listen"></div>
+    <div class="hero-hotspot songlist-hotspot" role="button" tabindex="0" aria-label="Song List" data-target="songs"></div>
+    <div class="hero-hotspot bookus-hotspot" role="button" tabindex="0" aria-label="Book Us" data-target="booking"></div>
+  </section>
+<section class="bio-section" id="bios">
+    <h2>Meet the Band</h2>
+    <div class="bio-grid">
+      <article class="bio-card full">
+        <h3>Girl From Mars</h3>
+        <p>It was an inevitable collision of cosmic interest in great songs that brought Jennifer Vazquez and Randy Dunham together. Though both from Earth, their sound together is clearly from another planet — or perhaps Donelson. Who’s to say?</p>
+        <p>Drawing from five decades of beloved music, Girl From Mars performs an eclectic acoustic mix of radio hits. From heartfelt ballads like <em>I Can’t Make You Love Me</em> and <em>Best of My Love</em> to crowd-pleasing singalongs like <em>Don’t Stop Believin’</em> and <em>When Will I Be Loved</em>, the duo delivers an evening of familiar songs, rich harmonies, and memorable performances.</p>
+        <p>Whether entertaining in restaurants, breweries, private events, or intimate listening rooms, Girl From Mars brings warmth, energy, and a touch of interplanetary charm to every stage.</p>
+      </article>
+
+      <article class="bio-card">
+        <div class="bio-photo-wrap">
+          <img class="bio-photo" src="assets/jennifer-vazquez.jpeg" alt="Jennifer Vazquez performing with guitar">
+        </div>
+        <h3>Jennifer Vazquez</h3>
+        <p>Born and raised in The Bronx, Jennifer Vazquez is a sixteen-time ASCAPlu$ Award winner whose captivating voice and dynamic stage presence have earned audiences throughout the United States and abroad.</p>
+        <p>Her musical style blends pop, folk-rock, and country influences, and she has toured extensively as a solo artist on both coasts as well as internationally throughout Sweden and England. As one half of the acclaimed duo Stilettos-n-Steel with Jason Waters, Jennifer performed at wineries, corporate events, and premier venues for enthusiastic audiences nationwide.</p>
+        <p>A seven-year residence in Los Angeles is when she honed and strengthened her skills performing on the 3rd Street Promenade in Santa Monica. She relocated to Nashville in 2016, where she has appeared live on Lightning 100, was a finalist in 2015 Tennessee Songwriter’s Week, and for three years has hosted monthly open mics at The Bowery Vault in East Nashville.</p>
+        <p>With lyrical and musical sprinkles of Linda Perry, Patty Griffin, and Jennifer Nettles, Jen’s influences and inspirations started with Donna Summer, Billy Joel, and Joni Mitchell. She has recorded in New Orleans, Los Angeles, Austin, and Nashville.</p>
+      </article>
+
+      <article class="bio-card">
+        <div class="bio-photo-wrap">
+          <img class="bio-photo" src="assets/randy-dunham.jpg" alt="Randy Dunham with acoustic guitar">
+        </div>
+        <h3>Randy Dunham</h3>
+        <p>A graduate of both Musicians Institute and UCLA, Randy has spent a lifetime exploring diverse musical styles, from hair metal and emo to pop, country, and acoustic music.</p>
+        <p>As co-founder of the band Brokedown Cadillac with Corri English, Randy enjoyed success with more than thirty film and television placements, including <em>Desperate Housewives</em>, <em>The Mentalist</em>, and Disney’s <em>Race to Witch Mountain</em>. The group also completed three overseas tours performing for U.S. troops stationed in Kuwait and Iraq.</p>
+        <p>Randy has long been a fixture in the acoustic music scene, performing in numerous duos throughout his career. Most notably, he spent ten years with Radio Flyer, a Saturday-night staple at the world-famous Burbank Bar & Grille. His passion for great songs remains as strong as ever — largely because there are still so many left to learn.</p>
+        <p>A dyslexic, Randy enjoys hot beer and cold women…</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="song-section" id="songs">
+    <h2>Full Song List</h2>
+    <ul class="song-grid">
+          <li>Lucky — Jason Mraz &amp; Colbie Caillat</li>
+          <li>Poison &amp; Wine — The Civil Wars</li>
+          <li>Need You Now — Lady Antebellum</li>
+          <li>Fix You — Coldplay</li>
+          <li>Happy Ever After — M. Porter &amp; J. Etheridge</li>
+          <li>When Stars Go Blue — Tyler Hilton &amp; Bethany Joy Lenz</li>
+          <li>Something Just Like This — The Chainsmokers / Coldplay</li>
+          <li>Keep On Loving You — REO Speedwagon</li>
+          <li>Find You — Zedd</li>
+          <li>Sometimes Love Ain’t Enough — Patty Smyth &amp; Don Henley</li>
+          <li>More Than a Feeling — Boston</li>
+          <li>Don’t Stop Believin’ — Journey</li>
+          <li>Black Velvet — Alannah Myles</li>
+          <li>Time After Time — Cyndi Lauper</li>
+          <li>Landslide — Fleetwood Mac</li>
+          <li>I Can’t Make You Love Me — Bonnie Raitt</li>
+          <li>When Will I Be Loved — Linda Ronstadt</li>
+          <li>Stupid Boy — Sarah Buxton</li>
+          <li>The Wire — HAIM</li>
+          <li>Drunk (And I Don’t Wanna Go Home) — Elle King &amp; Miranda Lambert</li>
+          <li>Better Man — Little Big Town</li>
+          <li>Hit Me With Your Best Shot — Pat Benatar</li>
+          <li>Breathe — Michelle Branch</li>
+          <li>Listen to Your Heart — Roxette</li>
+          <li>True Colors — Cyndi Lauper</li>
+          <li>Never Really Over — Katy Perry</li>
+          <li>Your Love — The Outfield</li>
+          <li>Heaven — Bryan Adams</li>
+          <li>Everywhere — Fleetwood Mac</li>
+          <li>Alone — Heart</li>
+          <li>Girls Just Want to Have Fun — Cyndi Lauper</li>
+          <li>No One Needs to Know — Shania Twain</li>
+          <li>Prayer ’94 — Bon Jovi</li>
+          <li>Somebody’s Baby — Jackson Browne</li>
+          <li>Learning to Fly — Tom Petty</li>
+          <li>Have a Little Faith — John Hiatt</li>
+          <li>Little Red Corvette — Prince</li>
+          <li>Best of My Love — Eagles</li>
+          <li>Crazy Love — Poco</li>
+          <li>When You Were Young — The Killers</li>
+          <li>Strong Enough — Sheryl Crow</li>
+          <li>I Got a Name — Jim Croce</li>
+          <li>Wonderwall — Oasis</li>
+          <li>Slow Dancing in a Burning Room — John Mayer</li>
+          <li>Wonderful Tonight — Eric Clapton</li>
+          <li>Wild World — Cat Stevens</li>
+          <li>Faithfully — Journey</li>
+          <li>Let My Love Open the Door — Pete Townshend</li>
+          <li>Take Me Home, Country Roads — John Denver</li>
+          <li>Southern Accents — Tom Petty</li>
+          <li>Rosie — Jackson Browne</li>
+    </ul>
+  </section>
+
+  
+
+<section class="listen-section" id="listen">
+  <h2>Listen</h2>
+
+  <div class="track">
+    <strong>Crazy Love — Poco</strong>
+    <audio controls src="audio/crazy-love.mp3"></audio>
+  </div>
+
+  <div class="track">
+    <strong>Need You Now — Lady A</strong>
+    <audio controls src="audio/need-you-now.mp3"></audio>
+  </div>
+
+  <div class="track coming-soon">
+    <strong>Don't Stop Believin' — Journey</strong>
+    <audio controls src="audio/dont-stop-believin.mp3"></audio>
+  </div>
+
+  <div class="track coming-soon">
+    <strong>No One Needs to Know — Shania Twain</strong>
+    <audio controls src="audio/no-one-needs-to-know.mp3"></audio>
+  </div>
+
+  <div class="track coming-soon">
+    <strong>When You Were Young — The Killers</strong>
+    <audio controls src="audio/when-you-were-young.mp3"></audio>
+  </div>
+
+  <div class="track coming-soon">
+    <strong>Heaven — Bryan Adams</strong>
+    <span>MP3 coming soon</span>
+  </div>
+
+  <div class="track coming-soon">
+    <strong>Better Man — Little Big Town</strong>
+    <span>MP3 coming soon</span>
+  </div>
+</section>
+
+
+
+  
+<section class="shows-section" id="shows">
+  <h2>Upcoming Shows</h2>
+
+  <!-- EASY SHOWS UPDATE:
+       Copy/paste a show-card block to add a show.
+       Edit the date, venue, city, and time below.
+  -->
+
+  <div class="show-card">
+    <div class="show-date">TBA</div>
+    <div>
+      <strong>No public shows currently listed</strong>
+      <p>Check back soon for upcoming Girl From Mars dates.</p>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+    <h2>Book Girl From Mars</h2>
+    <div class="booking-card">
+      <p>Available for restaurants, breweries, private parties, weddings, corporate events, and community shows throughout Middle Tennessee.</p>
+      <a class="email" href="mailto:girlfrommarsduo@gmail.com?subject=Booking%20Girl%20From%20Mars">girlfrommarsduo@gmail.com</a>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 Girl From Mars · Radio Acoustica</footer>
+
+
+
+
+
+
+
+<script>
+(function siteNavigation(){
+  function goTo(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  document.querySelectorAll('.hero-hotspot, .hero-nav-link').forEach(function(item) {
+    item.addEventListener('click', function() {
+      goTo(item.dataset.target);
+    });
+    item.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        goTo(item.dataset.target);
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
