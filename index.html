@@ -477,6 +477,50 @@ footer {
   }
 }
 
+
+/* Mobile active navigation buttons */
+.mobile-nav-buttons {
+  display:none;
+}
+
+@media(max-width:760px) {
+  .mobile-nav-buttons {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    padding:12px;
+    background:#031f1e;
+    border-top:1px solid rgba(244,223,183,.18);
+    border-bottom:1px solid rgba(244,223,183,.18);
+  }
+
+  .mobile-nav-buttons button {
+    appearance:none;
+    border:1px solid rgba(244,223,183,.45);
+    background:rgba(6,63,61,.95);
+    color:var(--cream);
+    border-radius:8px;
+    padding:12px 8px;
+    text-transform:uppercase;
+    font-weight:900;
+    letter-spacing:.04em;
+    font-size:.75rem;
+    cursor:pointer;
+  }
+
+  .mobile-nav-buttons button:last-child {
+    grid-column:1 / -1;
+    background:var(--orange);
+    color:white;
+    border-color:var(--orange);
+  }
+
+  .mobile-nav-buttons button:focus-visible {
+    outline:3px solid var(--gold);
+    outline-offset:3px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -665,6 +709,9 @@ footer {
 
 
 
+
+
+
 <script>
 (function siteNavigation(){
   function goTo(id) {
@@ -672,7 +719,7 @@ footer {
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  document.querySelectorAll('.hero-hotspot, .hero-nav-link').forEach(function(item) {
+  document.querySelectorAll('.hero-hotspot, .hero-nav-link, .mobile-nav-buttons button').forEach(function(item) {
     item.addEventListener('click', function() {
       goTo(item.dataset.target);
     });
