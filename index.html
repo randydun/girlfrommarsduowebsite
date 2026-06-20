@@ -478,14 +478,43 @@ footer {
 }
 
 
-/* Mobile active navigation buttons */
+
+/* FINAL RELIABLE LINK NAVIGATION */
+.hero-nav-link {
+  color: var(--cream);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .05em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.hero-nav-link:hover {
+  color: var(--orange);
+}
+.hero-hotspot {
+  position: absolute;
+  z-index: 999;
+  display: block;
+  background: transparent;
+  cursor: pointer;
+}
 .mobile-nav-buttons {
   display:none;
 }
 
 @media(max-width:760px) {
+  .hero-nav {
+    display:none !important;
+  }
+
+  .hero-hotspot {
+    display:none !important;
+  }
+
   .mobile-nav-buttons {
-    display:grid;
+    display:grid !important;
     grid-template-columns:1fr 1fr;
     gap:8px;
     padding:12px;
@@ -495,7 +524,6 @@ footer {
   }
 
   .mobile-nav-buttons a {
-    appearance:none;
     display:block;
     text-align:center;
     text-decoration:none;
@@ -508,7 +536,6 @@ footer {
     font-weight:900;
     letter-spacing:.04em;
     font-size:.75rem;
-    cursor:pointer;
   }
 
   .mobile-nav-buttons a:last-child {
@@ -516,11 +543,6 @@ footer {
     background:var(--orange);
     color:white;
     border-color:var(--orange);
-  }
-
-  .mobile-nav-buttons a:focus-visible {
-    outline:3px solid var(--gold);
-    outline-offset:3px;
   }
 }
 
@@ -532,17 +554,26 @@ footer {
 <main>
   <section class="hero">
     <nav class="hero-nav">
-      <span class="hero-nav-link" role="button" tabindex="0" data-target="bios">Meet the Band</span>
-      <span class="hero-nav-link" role="button" tabindex="0" data-target="songs">Song List</span>
-      <span class="hero-nav-link" role="button" tabindex="0" data-target="listen">Listen</span>
-      <span class="hero-nav-link" role="button" tabindex="0" data-target="shows">Upcoming Shows</span>
-      <span class="hero-nav-link" role="button" tabindex="0" data-target="booking">Book Us</span>
+      <a class="hero-nav-link" href="#bios">Meet the Band</a>
+      <a class="hero-nav-link" href="#songs">Song List</a>
+      <a class="hero-nav-link" href="#listen">Listen</a>
+      <a class="hero-nav-link" href="#shows">Upcoming Shows</a>
+      <a class="hero-nav-link" href="#booking">Book Us</a>
     </nav>
     <img src="assets/hero-artwork-clean.png" alt="Girl From Mars acoustic duo hero artwork">
-    <div class="hero-hotspot listen-hotspot" role="button" tabindex="0" aria-label="Listen" data-target="listen"></div>
-    <div class="hero-hotspot songlist-hotspot" role="button" tabindex="0" aria-label="Song List" data-target="songs"></div>
-    <div class="hero-hotspot bookus-hotspot" role="button" tabindex="0" aria-label="Book Us" data-target="booking"></div>
+    <a class="hero-hotspot listen-hotspot" href="#listen" aria-label="Listen"></a>
+    <a class="hero-hotspot songlist-hotspot" href="#songs" aria-label="Song List"></a>
+    <a class="hero-hotspot bookus-hotspot" href="#booking" aria-label="Book Us"></a>
   </section>
+
+  <nav class="mobile-nav-buttons" aria-label="Mobile site navigation">
+    <a href="#bios">Meet the Band</a>
+    <a href="#songs">Song List</a>
+    <a href="#listen">Listen</a>
+    <a href="#shows">Upcoming Shows</a>
+    <a href="#booking">Book Us</a>
+  </nav>
+
 <section class="bio-section" id="bios">
     <h2>Meet the Band</h2>
     <div class="bio-grid">
@@ -687,10 +718,10 @@ footer {
   -->
 
   <div class="show-card">
-    <div class="show-date">TBA</div>
+    <div class="show-date">AUG 2</div>
     <div>
-      <strong>No public shows currently listed</strong>
-      <p>Check back soon for upcoming Girl From Mars dates.</p>
+      <strong>Drifters</strong>
+      <p>East Nashville, TN · 6:00 PM</p>
     </div>
   </div>
 </section>
