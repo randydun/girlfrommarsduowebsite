@@ -479,7 +479,8 @@ footer {
 
 
 
-/* FINAL RELIABLE LINK NAVIGATION */
+
+/* FINAL BUTTON NAVIGATION WITHOUT BROWSER URL PREVIEW */
 .hero-nav-link {
   color: var(--cream);
   text-decoration: none;
@@ -493,6 +494,12 @@ footer {
 .hero-nav-link:hover {
   color: var(--orange);
 }
+.hero-nav-link:focus-visible,
+.hero-hotspot:focus-visible,
+.mobile-nav-buttons button:focus-visible {
+  outline:3px solid var(--gold);
+  outline-offset:3px;
+}
 .hero-hotspot {
   position: absolute;
   z-index: 999;
@@ -503,16 +510,13 @@ footer {
 .mobile-nav-buttons {
   display:none;
 }
-
 @media(max-width:760px) {
   .hero-nav {
     display:none !important;
   }
-
   .hero-hotspot {
     display:none !important;
   }
-
   .mobile-nav-buttons {
     display:grid !important;
     grid-template-columns:1fr 1fr;
@@ -522,11 +526,10 @@ footer {
     border-top:1px solid rgba(244,223,183,.18);
     border-bottom:1px solid rgba(244,223,183,.18);
   }
-
-  .mobile-nav-buttons a {
+  .mobile-nav-buttons button {
+    appearance:none;
     display:block;
     text-align:center;
-    text-decoration:none;
     border:1px solid rgba(244,223,183,.45);
     background:rgba(6,63,61,.95);
     color:var(--cream);
@@ -536,9 +539,9 @@ footer {
     font-weight:900;
     letter-spacing:.04em;
     font-size:.75rem;
+    cursor:pointer;
   }
-
-  .mobile-nav-buttons a:last-child {
+  .mobile-nav-buttons button:last-child {
     grid-column:1 / -1;
     background:var(--orange);
     color:white;
@@ -554,24 +557,24 @@ footer {
 <main>
   <section class="hero">
     <nav class="hero-nav">
-      <a class="hero-nav-link" href="#bios">Meet the Band</a>
-      <a class="hero-nav-link" href="#songs">Song List</a>
-      <a class="hero-nav-link" href="#listen">Listen</a>
-      <a class="hero-nav-link" href="#shows">Upcoming Shows</a>
-      <a class="hero-nav-link" href="#booking">Book Us</a>
+      <span class="hero-nav-link" role="button" tabindex="0" data-target="bios">Meet the Band</span>
+      <span class="hero-nav-link" role="button" tabindex="0" data-target="songs">Song List</span>
+      <span class="hero-nav-link" role="button" tabindex="0" data-target="listen">Listen</span>
+      <span class="hero-nav-link" role="button" tabindex="0" data-target="shows">Upcoming Shows</span>
+      <span class="hero-nav-link" role="button" tabindex="0" data-target="booking">Book Us</span>
     </nav>
     <img src="assets/hero-artwork-clean.png" alt="Girl From Mars acoustic duo hero artwork">
-    <a class="hero-hotspot listen-hotspot" href="#listen" aria-label="Listen"></a>
-    <a class="hero-hotspot songlist-hotspot" href="#songs" aria-label="Song List"></a>
-    <a class="hero-hotspot bookus-hotspot" href="#booking" aria-label="Book Us"></a>
+    <div class="hero-hotspot listen-hotspot" role="button" tabindex="0" aria-label="Listen" data-target="listen"></div>
+    <div class="hero-hotspot songlist-hotspot" role="button" tabindex="0" aria-label="Song List" data-target="songs"></div>
+    <div class="hero-hotspot bookus-hotspot" role="button" tabindex="0" aria-label="Book Us" data-target="booking"></div>
   </section>
 
   <nav class="mobile-nav-buttons" aria-label="Mobile site navigation">
-    <a href="#bios">Meet the Band</a>
-    <a href="#songs">Song List</a>
-    <a href="#listen">Listen</a>
-    <a href="#shows">Upcoming Shows</a>
-    <a href="#booking">Book Us</a>
+    <button type="button" data-target="bios">Meet the Band</button>
+    <button type="button" data-target="songs">Song List</button>
+    <button type="button" data-target="listen">Listen</button>
+    <button type="button" data-target="shows">Upcoming Shows</button>
+    <button type="button" data-target="booking">Book Us</button>
   </nav>
 
 <section class="bio-section" id="bios">
@@ -747,6 +750,27 @@ footer {
 
 
 
+
+
+<script>
+(function siteNavigation(){
+  function goTo(id) {
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  document.querySelectorAll('[data-target]').forEach(function(item) {
+    item.addEventListener('click', function() {
+      goTo(item.getAttribute('data-target'));
+    });
+    item.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        goTo(item.getAttribute('data-target'));
+      }
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
